@@ -1,5 +1,30 @@
+using FDS.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// For Entity Framework
+builder.Services.AddDbContext<ApplicationDbContext>(opts =>
+{
+    opts.UseSqlServer(
+        builder.Configuration["ConnectionStrings:Connection"]);
+});
+
+// For identity
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
