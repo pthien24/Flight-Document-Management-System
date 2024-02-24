@@ -1049,6 +1049,41 @@
             "rid": "win"
           }
         }
+      },
+      "FDS.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.27"
+        },
+        "compile": {
+          "bin/placeholder/FDS.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FDS.Data.dll": {}
+        }
+      },
+      "FDS.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FDS.Data": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.27",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.27",
+          "Swashbuckle.AspNetCore": "6.5.0"
+        },
+        "compile": {
+          "bin/placeholder/FDS.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FDS.Service.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -2994,10 +3029,21 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "FDS.Data/1.0.0": {
+      "type": "project",
+      "path": "../FDS.Data/FDS.Data.csproj",
+      "msbuildProject": "../FDS.Data/FDS.Data.csproj"
+    },
+    "FDS.Service/1.0.0": {
+      "type": "project",
+      "path": "../FDS.Service/FDS.Service.csproj",
+      "msbuildProject": "../FDS.Service/FDS.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "FDS.Service >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.27",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.27",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.27",
@@ -3032,7 +3078,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\FDS.Service.csproj": {
+              "projectPath": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\FDS.Service.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

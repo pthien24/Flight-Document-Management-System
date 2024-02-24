@@ -1,0 +1,15 @@
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\bin\Debug\net6.0\FDS.Data.deps.json
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\bin\Debug\net6.0\FDS.Data.runtimeconfig.json
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\bin\Debug\net6.0\FDS.Data.dll
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\bin\Debug\net6.0\FDS.Data.pdb
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.csproj.AssemblyReference.cache
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.AssemblyInfoInputs.cache
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.AssemblyInfo.cs
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.csproj.CoreCompileInputs.cache
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.sourcelink.json
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.dll
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\refint\FDS.Data.dll
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.pdb
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\FDS.Data.genruntimeconfig.cache
+C:\Users\thienXwho\Documents\Flight-Document-Management-System\FDS\FDS.Data\obj\Debug\net6.0\ref\FDS.Data.dll

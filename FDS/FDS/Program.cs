@@ -1,4 +1,6 @@
+using FDS.Data.Models;
 using FDS.Models;
+using FDS.Service.Services;
 using FDS.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -16,10 +18,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
         builder.Configuration["ConnectionStrings:Connection"]);
 });
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IUserManagement, UserManagement>();
 
 // For identity
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 

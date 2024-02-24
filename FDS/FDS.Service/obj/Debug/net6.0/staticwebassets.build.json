@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "W1HmfEAsM+0YLZ8UdztumsvVIJnt6nkOKJxzCTY4NUE=",
+  "Source": "FDS.Service",
+  "BasePath": "_content/FDS.Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

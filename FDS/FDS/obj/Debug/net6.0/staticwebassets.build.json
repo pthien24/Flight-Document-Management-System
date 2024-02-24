@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "7hSGXzm3C0pUjDRRjW+mwGuBHok1wAr2Ju45F2/57HE=",
+  "Hash": "4XsF7xVjpda6eTIWya6qKR4Ib1gHyrSiQ3Z+6jJwLSc=",
   "Source": "FDS",
   "BasePath": "_content/FDS",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\FDS.Service.csproj",
+      "Version": 2,
+      "Source": "FDS.Service",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

@@ -1,6 +1,7 @@
-﻿using FDS.Models;
-using FDS.Models.Authentication.Login;
-using FDS.Models.Authentication.SignUp;
+﻿using FDS.Data.Models;
+using FDS.Models;
+using FDS.Service.Models.Authentication.Login;
+using FDS.Service.Models.Authentication.SignUp;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,14 +12,14 @@ namespace FDS.Services
 {
     public class AuthenticationService : IAuthenticationService 
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IConfiguration _configuration;
 
-        public AuthenticationService(UserManager<IdentityUser> userManager,
+        public AuthenticationService(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            SignInManager<IdentityUser> signInManager,
+            SignInManager<ApplicationUser> signInManager,
             IConfiguration configuration)
         {
             _userManager = userManager;
@@ -27,42 +28,6 @@ namespace FDS.Services
             _configuration = configuration;
         }
 
-        public async Task<LoginResponse> LoginUserAsync(LoginModel loginModel)
-        {
-            var user = await _userManager.FindByEmailAsync(loginModel.Email);
-            if (user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(user, loginModel.Password, false, false);
-
-                if (result.Succeeded)
-                {
-                    // User successfully signed in
-                    var authClaims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.UserName),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    };
-                    var userRoles = await _userManager.GetRolesAsync(user);
-                    foreach (var role in userRoles)
-                    {
-                        authClaims.Add(new Claim(ClaimTypes.Role, role));
-                    }
-                    var jwtToken = GetToken(authClaims);
-
-                    var userDto = new UserDto
-                    {
-                        ID = user.Id,
-                        Email = user.Email,
-                        Name = user.UserName
-                    };
-                    // Generate JWT token or any other authentication token here
-                    var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
-                    return new LoginResponse { User = userDto, Token = token };
-                }
-            }
-            // Authentication failed
-            return new LoginResponse { User = null, Token = null };
-        }
 
         public async Task<Response> RegisterUserAsync(RegisterUser registerUser, string role)
         {
@@ -72,7 +37,7 @@ namespace FDS.Services
                 return new Response { Success = false, Status = "Error", Message = "email user already exists!" };
             }
 
-            IdentityUser user = new()
+            ApplicationUser user = new()
             {
                 Email = registerUser.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),

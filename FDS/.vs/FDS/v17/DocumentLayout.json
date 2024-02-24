@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\services\\usermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\services\\usermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\signup\\registeruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\signup\\registeruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\services\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\services\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\login\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\login\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B6E251C-4259-4591-8FEB-7006FCADA5DF}|FDS.Data\\FDS.Data.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.data\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6E251C-4259-4591-8FEB-7006FCADA5DF}|FDS.Data\\FDS.Data.csproj|solutionrelative:fds.data\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Migrations\\20240224035722_InititalMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FDS.Data\\Migrations\\20240224035722_InititalMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,32 +51,36 @@
       "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\user\\createuserresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\user\\createuserresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{2B6E251C-4259-4591-8FEB-7006FCADA5DF}|FDS.Data\\FDS.Data.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.data\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6E251C-4259-4591-8FEB-7006FCADA5DF}|FDS.Data\\FDS.Data.csproj|solutionrelative:fds.data\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\user\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\services\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\fds.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\fds.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\models\\response.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\models\\authentication\\signup\\resetpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\models\\authentication\\signup\\resetpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\user\\tokentype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\user\\tokentype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds\\models\\authentication\\signup\\registeruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39E427C6-6366-4561-A5D5-4A6128C57507}|FDS\\FDS.csproj|solutionrelative:fds\\models\\authentication\\signup\\registeruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\signup\\resetpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\signup\\resetpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|c:\\users\\thienxwho\\documents\\flight-document-management-system\\fds\\fds.service\\models\\authentication\\login\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D844FD3-24F5-434C-94A9-304811A8E7EE}|FDS.Service\\FDS.Service.csproj|solutionrelative:fds.service\\models\\authentication\\login\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 820,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +98,135 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "FDS\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "FDS\\Services\\AuthenticationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T08:24:50.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "FDS.Data\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "FDS.Data\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T03:12:36.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Services\\UserManagement.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Services\\UserManagement.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Services\\UserManagement.cs",
+              "RelativeToolTip": "FDS.Service\\Services\\UserManagement.cs",
+              "ViewState": "AQIAAHkAAAAAAAAAAAAowHIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T01:49:02.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\Login\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\Login\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\Login\\LoginResponse.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\Login\\LoginResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T08:17:02.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "FDS\\Services\\IAuthenticationService.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\IAuthenticationService.cs",
+              "RelativeToolTip": "FDS\\Services\\IAuthenticationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T03:39:49.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Services\\IUserManagement.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Services\\IUserManagement.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Services\\IUserManagement.cs",
+              "RelativeToolTip": "FDS.Service\\Services\\IUserManagement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T02:55:51.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "FDS\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "FDS\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAwwE8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T08:22:48.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "RegisterUser.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\SignUp\\RegisterUser.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\SignUp\\RegisterUser.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\SignUp\\RegisterUser.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\SignUp\\RegisterUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T01:44:32.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Program.cs",
+              "RelativeDocumentMoniker": "FDS\\Program.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Program.cs",
+              "RelativeToolTip": "FDS\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T01:11:53.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreateUserResponse.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\CreateUserResponse.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\User\\CreateUserResponse.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\CreateUserResponse.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\User\\CreateUserResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T08:02:34.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "FDS\\Controllers\\WeatherForecastController.cs",
@@ -66,121 +234,117 @@
               "RelativeToolTip": "FDS\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T08:41:04.603Z",
+              "WhenOpened": "2024-02-22T08:41:04.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20240224035722_InititalMigration.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Migrations\\20240224035722_InititalMigration.cs",
+              "RelativeDocumentMoniker": "FDS.Data\\Migrations\\20240224035722_InititalMigration.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Migrations\\20240224035722_InititalMigration.cs",
+              "RelativeToolTip": "FDS.Data\\Migrations\\20240224035722_InititalMigration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T03:57:22.609Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "FDS\\Services\\AuthenticationService.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\AuthenticationService.cs",
-              "RelativeToolTip": "FDS\\Services\\AuthenticationService.cs",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAkwF8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T03:43:23.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IAuthenticationService.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\IAuthenticationService.cs",
-              "RelativeDocumentMoniker": "FDS\\Services\\IAuthenticationService.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Services\\IAuthenticationService.cs",
-              "RelativeToolTip": "FDS\\Services\\IAuthenticationService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T03:39:49.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "FDS\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "FDS\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAAwE8AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T02:57:18.321Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Program.cs",
-              "RelativeDocumentMoniker": "FDS\\Program.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Program.cs",
-              "RelativeToolTip": "FDS\\Program.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAswFcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T01:11:53.867Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "FDS\\Models\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\ApplicationDbContext.cs",
-              "RelativeToolTip": "FDS\\Models\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T00:59:21.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\appsettings.json",
               "RelativeDocumentMoniker": "FDS\\appsettings.json",
               "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\appsettings.json",
               "RelativeToolTip": "FDS\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-02-19T00:54:34.203Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RegisterUser.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Authentication\\SignUp\\RegisterUser.cs",
-              "RelativeDocumentMoniker": "FDS\\Models\\Authentication\\SignUp\\RegisterUser.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Authentication\\SignUp\\RegisterUser.cs",
-              "RelativeToolTip": "FDS\\Models\\Authentication\\SignUp\\RegisterUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAfAAAA",
+              "DocumentIndex": 13,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Models\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "FDS.Data\\Models\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Data\\Models\\ApplicationDbContext.cs",
+              "RelativeToolTip": "FDS.Data\\Models\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-18T16:54:45.962Z"
+              "WhenOpened": "2024-02-24T03:11:08.304Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Response.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Response.cs",
-              "RelativeDocumentMoniker": "FDS\\Models\\Response.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Response.cs",
-              "RelativeToolTip": "FDS\\Models\\Response.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-18T16:33:41.876Z"
+              "DocumentIndex": 15,
+              "Title": "FDS.Service.csproj",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\FDS.Service.csproj",
+              "RelativeDocumentMoniker": "FDS.Service\\FDS.Service.csproj",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\FDS.Service.csproj",
+              "RelativeToolTip": "FDS.Service\\FDS.Service.csproj",
+              "ViewState": "AQIAABwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-02-24T03:15:19.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\UserDto.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\User\\UserDto.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\UserDto.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\User\\UserDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T02:55:41.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TokenType.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\TokenType.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\User\\TokenType.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\User\\TokenType.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\User\\TokenType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T02:16:51.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\Login\\LoginModel.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\Login\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\Login\\LoginModel.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\Login\\LoginModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T01:43:46.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\ApiResponse.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\ApiResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-22T09:07:19.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "ResetPassword.cs",
-              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Authentication\\SignUp\\ResetPassword.cs",
-              "RelativeDocumentMoniker": "FDS\\Models\\Authentication\\SignUp\\ResetPassword.cs",
-              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS\\Models\\Authentication\\SignUp\\ResetPassword.cs",
-              "RelativeToolTip": "FDS\\Models\\Authentication\\SignUp\\ResetPassword.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAbAAAA",
+              "DocumentMoniker": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\SignUp\\ResetPassword.cs",
+              "RelativeDocumentMoniker": "FDS.Service\\Models\\Authentication\\SignUp\\ResetPassword.cs",
+              "ToolTip": "C:\\Users\\thienXwho\\Documents\\Flight-Document-Management-System\\FDS\\FDS.Service\\Models\\Authentication\\SignUp\\ResetPassword.cs",
+              "RelativeToolTip": "FDS.Service\\Models\\Authentication\\SignUp\\ResetPassword.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-21T02:41:42.497Z"
+              "WhenOpened": "2024-02-23T01:44:41.945Z"
             }
           ]
         },

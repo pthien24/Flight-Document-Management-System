@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "FDS/1.0.0": {
         "dependencies": {
+          "FDS.Service": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.27",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.27",
           "Microsoft.EntityFrameworkCore.Design": "6.0.27",
@@ -592,6 +593,28 @@
             "fileVersion": "4.700.19.56404"
           }
         }
+      },
+      "FDS.Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.27"
+        },
+        "runtime": {
+          "FDS.Data.dll": {}
+        }
+      },
+      "FDS.Service/1.0.0": {
+        "dependencies": {
+          "FDS.Data": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.27",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.27",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.27",
+          "Swashbuckle.AspNetCore": "6.5.0"
+        },
+        "runtime": {
+          "FDS.Service.dll": {}
+        }
       }
     }
   },
@@ -1027,6 +1050,16 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "FDS.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FDS.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

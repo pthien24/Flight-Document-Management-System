@@ -1,16 +1,13 @@
-﻿using FDS.Models;
-using FDS.Models.Authentication.Login;
-using FDS.Models.Authentication.SignUp;
+﻿using FDS.Data.Models;
+using FDS.Models;
+using FDS.Service.Models.Authentication.Login;
+using FDS.Service.Models.Authentication.SignUp;
+using FDS.Service.Services;
 using FDS.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.ComponentModel.DataAnnotations;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+
 
 namespace FDS.Controllers
 {
@@ -19,49 +16,49 @@ namespace FDS.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUserManagement _user;
 
-        public AuthenticationController(IAuthenticationService authenticationService,UserManager<IdentityUser> userManager)
+        public AuthenticationController(IAuthenticationService authenticationService,UserManager<ApplicationUser> userManager, IUserManagement user
+            )
         {
             _authenticationService = authenticationService;
             _userManager = userManager;
+            _user = user;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser,String role)
+        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
         {
-            var result = await _authenticationService.RegisterUserAsync(registerUser, role);
+            if (registerUser == null)
+            {
+                return BadRequest();
+            }
+            var tokenResponse = await _user.CreateUserAsync(registerUser);
 
-            if (result.Success)
+            if (tokenResponse.IsSuccess && tokenResponse.Response != null)
             {
-                return StatusCode(StatusCodes.Status201Created, new Response {Success=result.Success, Status =  result.Status , Message = result.Message});
+                if (registerUser.Roles != null && tokenResponse.Response.User !=null)
+                {
+                    await _user.AsignRoleAsync(registerUser.Roles, tokenResponse.Response.User);
+                }
+                return StatusCode(StatusCodes.Status200OK,
+                        new Response { Success = true, Message = $"{tokenResponse.Message}" });
             }
-            else
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Success = result.Success, Status = result.Status, Message = result.Message });
-            }
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                  new Response { Message = tokenResponse?.Message , Success = false });
         }
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-            var loginResponse = await _authenticationService.LoginUserAsync(loginModel);
-            if (loginResponse.User == null)
+            var jwt = await _user.LoginUserWithJWTokenAsync(loginModel);
+            if (jwt.IsSuccess)
             {
-                return BadRequest(new Response
-                {
-                    Success = false,
-                    Status = "Error",
-                    Message = "Username or password is incorrect",
-                });
+                return Ok(jwt);
             }
-            return Ok(new Response
-            {
-                Data = loginResponse,
-                Success = true,
-                Status = "Success",
-                Message = "Login Successfull",
-            });
+            return StatusCode(StatusCodes.Status404NotFound,
+                new Response { Status = "Success", Message = $"Invalid Code" });
 
         }
 
@@ -81,7 +78,6 @@ namespace FDS.Controllers
             return StatusCode(StatusCodes.Status400BadRequest,
                     new Response { Success = false, Status = "Error", Message = "Could not sent link reset password" });
         }
-
         [HttpGet]
         [Route("Reset-Password")]
         public async Task<IActionResult> ResetPassword(string token , string email)
