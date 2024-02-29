@@ -3,7 +3,6 @@ using FDS.Models;
 using FDS.Service.Models.Authentication.Login;
 using FDS.Service.Models.Authentication.SignUp;
 using FDS.Service.Services;
-using FDS.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,14 +14,12 @@ namespace FDS.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationService _authenticationService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserManagement _user;
 
-        public AuthenticationController(IAuthenticationService authenticationService,UserManager<ApplicationUser> userManager, IUserManagement user
+        public AuthenticationController(UserManager<ApplicationUser> userManager, IUserManagement user
             )
         {
-            _authenticationService = authenticationService;
             _userManager = userManager;
             _user = user;
         }
@@ -58,7 +55,7 @@ namespace FDS.Controllers
                 return Ok(jwt);
             }
             return StatusCode(StatusCodes.Status404NotFound,
-                new Response { Status = "Success", Message = $"Invalid Code" });
+                new Response { Status = "Error", Message = $"Invalid Code" });
 
         }
 
@@ -67,26 +64,34 @@ namespace FDS.Controllers
         [Route("forgot-password")]
         public async Task<IActionResult> ForgotPassword( string email)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user != null)
+            var result = await _user.ForgotPasswordAsync(email);
+            if (result.IsSuccess)
             {
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var link = Url.Action(nameof(ResetPassword), "Authentication", new { token, email = user.Email }, Request.Scheme);
-                return StatusCode(StatusCodes.Status200OK,
-                    new Response {Success = true, Status = "Success" , Message = $"{link}"});
+                return Ok(result);
             }
-            return StatusCode(StatusCodes.Status400BadRequest,
-                    new Response { Success = false, Status = "Error", Message = "Could not sent link reset password" });
+            return BadRequest(result);
         }
         [HttpGet]
-        [Route("Reset-Password")]
+        [Route("reset-password")]
         public async Task<IActionResult> ResetPassword(string token , string email)
         {
             var model = new ResetPassword { Token = token, Email = email };
-            return Ok(new
+            return await Task.FromResult(Ok(new
             {
                 model
-            }) ;
+            }));
         }
-}
+        [HttpPost]
+        [Route("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPassword resetPassword)
+        {
+            var result = await _user.ResetPasswordAsync(resetPassword);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+    }
 }

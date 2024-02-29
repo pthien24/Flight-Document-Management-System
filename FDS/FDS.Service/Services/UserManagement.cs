@@ -1,8 +1,6 @@
 ﻿using FDS.Service.Models;
 using FDS.Service.Models.Authentication.SignUp;
 using Microsoft.AspNetCore.Identity;
-using System.Data;
-using System;
 using FDS.Service.Models.Authentication.User;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,6 +9,11 @@ using System.Text;
 using FDS.Data.Models;
 using FDS.Service.Models.Authentication.Login;
 using FDS.Models;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 
 namespace FDS.Service.Services
 {
@@ -20,15 +23,21 @@ namespace FDS.Service.Services
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUrlHelperFactory _urlHelperFactory;
         public UserManagement(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+            SignInManager<ApplicationUser> signInManager,
+            IConfiguration configuration, 
+            IHttpContextAccessor httpContextAccessor,
+            IUrlHelperFactory urlHelperFactory)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
+            _urlHelperFactory = urlHelperFactory;
         }
 
         public async Task<ApiResponse<List<string>>> AsignRoleAsync(List<string> role, ApplicationUser user)
@@ -100,6 +109,8 @@ namespace FDS.Service.Services
             if (user != null)
             {
                 return await GetJwtTokenAsync(user);
+
+
             }
             return new ApiResponse<LoginResponse>()
             {
@@ -127,7 +138,16 @@ namespace FDS.Service.Services
             {
                 authClaims.Add(new Claim(ClaimTypes.Role, role));
             }
-            var jwtToken = GetToken(authClaims); 
+            var jwtToken = GetToken(authClaims);  //token
+            var refeshtoken = GenerateRefreshToken();
+
+            _ = int.TryParse(_configuration["JWT:RefreshTokenValidity"], out int RefreshToken);
+
+            user.RefreshToken = refeshtoken;
+            user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(RefreshToken);
+
+
+
             await _userManager.UpdateAsync(user);
             var userDto = new UserDto
             {
@@ -145,18 +165,86 @@ namespace FDS.Service.Services
                         Token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
                         ExpiryTokenDate = jwtToken.ValidTo
                     },
+                    RefreshToken = new TokenType()
+                    {
+                        Token = user.RefreshToken,
+                        ExpiryTokenDate = (DateTime)user.RefreshTokenExpiry
+                    }
                     
                 },
                 IsSuccess = true,
                 StatusCode = 200,
-                Message = $"Token created"
+                Message = $"Token created adn user login successfully"
             };
+        }
+        
+
+        public async Task<IActionResult> ResetPassword(string token, string email)
+        {
+            var model = new ResetPassword { Token = token, Email = email };
+            return await Task.FromResult<IActionResult>(new OkObjectResult(new { model }));
+        }
+
+        public async Task<ApiResponse<ResetPasswordResponse>> ForgotPasswordAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var actionContext = new ActionContext(_httpContextAccessor.HttpContext, _httpContextAccessor.HttpContext.GetRouteData(), new ActionDescriptor());
+
+                var urlHelper = _urlHelperFactory.GetUrlHelper(actionContext);
+                var link = urlHelper.Action(nameof(ResetPassword), "Authentication", new { token, email = user.Email }, _httpContextAccessor.HttpContext.Request.Scheme);
+                return new ApiResponse<ResetPasswordResponse>
+                {
+                    Response = new ResetPasswordResponse()
+                    {
+                        ResetPasswordLink = link
+                    },
+                    IsSuccess = true,
+                    StatusCode = 200,
+                    Message = $"link reset created"
+                };
+            }
+            return new ApiResponse<ResetPasswordResponse>
+            {
+                Response = new ResetPasswordResponse()
+                {
+                },
+                IsSuccess = false,
+                StatusCode = 400,
+                Message = "Could not send reset password link"
+            };
+        }
+
+        public async Task<ApiResponse<string>> ResetPasswordAsync(ResetPassword resetPassword)
+        {
+            var user = await _userManager.FindByEmailAsync(resetPassword.Email);
+
+            var passwordCheck = await _userManager.CheckPasswordAsync(user, resetPassword.Password);
+            if (passwordCheck)
+            {
+                return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "New password must be different from the old password" };
+            }
+
+            if (user != null)
+            {
+                var resetPassRes = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
+                if (resetPassRes.Succeeded)
+                {
+                    return new ApiResponse<string> { IsSuccess =true,StatusCode = 200, Message = "Password has been changed" };
+                }
+
+                return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "Password reset failed" };
+            }
+
+            return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "User not found" };
         }
 
         private bool IsEmailAllowed(string email)
         {
             string[] emailParts = email.Split('@');
-            if (emailParts.Length == 2) 
+            if (emailParts.Length == 2)
             {
                 return emailParts[1].Equals("vietjet.com", StringComparison.OrdinalIgnoreCase);
             }
@@ -169,16 +257,24 @@ namespace FDS.Service.Services
             var expirationTimeUtc = DateTime.UtcNow.AddDays(2);
             var localTimeZone = TimeZoneInfo.Local;
             var expirationTimeInLocalTimeZone = TimeZoneInfo.ConvertTimeFromUtc(expirationTimeUtc, localTimeZone);
-
+            _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"], out int TokenValidityInMinutes);
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
                 audience: _configuration["JWT:ValidAudience"],
-                expires: expirationTimeInLocalTimeZone,
+                expires: DateTime.UtcNow.AddMinutes(TokenValidityInMinutes),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
 
             return token;
+        }
+
+        private string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[64];
+            var range = System.Security.Cryptography.RandomNumberGenerator.Create();
+            range.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
         }
     }
 }
