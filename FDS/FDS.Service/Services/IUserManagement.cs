@@ -10,12 +10,17 @@ namespace FDS.Service.Services
 {
     public interface IUserManagement
     {
+
+        Task<ApplicationUser> FindUserByEmailAsync(string email);
+        Task<ApiResponse<string>> SetRolesAsync(string email, List<string> roles);
+        Task<ApiResponse<RoleResponse>> GetUserRolesAsync(string email);
+        Task<ApiResponse<string>> RemoveRolesAsync(string email, List<string> roles);
         Task<ApiResponse<CreateUserResponse>> CreateUserAsync(RegisterUser registerUser);
         Task<ApiResponse<List<string>>> AsignRoleAsync(List<string> role, ApplicationUser user);
         Task<ApiResponse<LoginResponse>> GetJwtTokenAsync(ApplicationUser user);
         Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(LoginModel loginmodel);
         Task<ApiResponse<ResetPasswordResponse>> ForgotPasswordAsync(string email);
-        Task<IActionResult> ResetPassword(string token, string email);
         Task<ApiResponse<string>> ResetPasswordAsync(ResetPassword resetPassword);
+        Task<ApiResponse<LoginResponse>> RenewAccessToken(RefreshTokenModel tokens);
     }
 }

@@ -122,17 +122,31 @@ namespace FDS.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a6d03253-ccd5-4bd7-b9ce-ee6b2009819f",
+                            Id = "1d0be4df-f812-4172-8ad9-724bfca68913",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "c227d90d-5ada-468a-93fa-640d67f6bc4c",
+                            Id = "394975b6-b989-4b7c-b4a0-6460f25c497c",
                             ConcurrencyStamp = "2",
                             Name = "Pilot",
                             NormalizedName = "Pilot"
+                        },
+                        new
+                        {
+                            Id = "44bf758e-b939-4b9b-87e0-bd804b1e9ab7",
+                            ConcurrencyStamp = "3",
+                            Name = "Emloyee",
+                            NormalizedName = "Emloyee"
+                        },
+                        new
+                        {
+                            Id = "1483f620-9aa2-4dec-abb6-5464d06698b5",
+                            ConcurrencyStamp = "4",
+                            Name = "Attendant",
+                            NormalizedName = "Attendant"
                         });
                 });
 

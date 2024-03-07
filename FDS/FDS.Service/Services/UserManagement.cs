@@ -23,23 +23,55 @@ namespace FDS.Service.Services
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IUrlHelperFactory _urlHelperFactory;
         public UserManagement(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
-            IConfiguration configuration, 
-            IHttpContextAccessor httpContextAccessor,
-            IUrlHelperFactory urlHelperFactory)
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _configuration = configuration;
-            _httpContextAccessor = httpContextAccessor;
-            _urlHelperFactory = urlHelperFactory;
-        }
 
+        }
+        public async Task<ApplicationUser> FindUserByEmailAsync(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+        public async Task<ApiResponse<RoleResponse>> GetUserRolesAsync(string email)
+        {
+            var user = await FindUserByEmailAsync(email);
+            if (user == null)
+            {
+                return new ApiResponse<RoleResponse> { IsSuccess = false, StatusCode = 404, Message = $"User with email '{email}' not found." };
+            }
+            var userRole = await _userManager.GetRolesAsync(user);
+            var response = new RoleResponse
+            {
+                mail = email,
+                role = userRole.ToList()
+            };
+
+            return new ApiResponse<RoleResponse> { IsSuccess = true, StatusCode = 200, Message = "User roles retrieved successfully.", Response = response };
+        }
+        public async Task<ApiResponse<string>> SetRolesAsync(string email, List<string> roles)
+        {
+            var user = await FindUserByEmailAsync(email);
+            if (user == null)
+            {
+                return new ApiResponse<string> { IsSuccess = false, StatusCode = 404, Message = $"User with email '{email}' not found." };
+            }
+
+            var result = await AsignRoleAsync(roles,user);
+            if (result.IsSuccess)
+            {
+                return new ApiResponse<string> { IsSuccess = true, StatusCode = 200, Message = "Roles assigned successfully."  };
+            }
+            else
+            {
+                return new ApiResponse<string> { IsSuccess = false, StatusCode = 500, Message = "Failed to assign roles." };
+            }
+        }
         public async Task<ApiResponse<List<string>>> AsignRoleAsync(List<string> role, ApplicationUser user)
         {
             var asignedRole = new List<string>();
@@ -57,7 +89,10 @@ namespace FDS.Service.Services
             return new ApiResponse<List<string>> { IsSuccess = true, StatusCode = 200, Message = "Role has been assigned ",Response = asignedRole };
 
         }
-
+        public Task<ApiResponse<string>> RemoveRolesAsync(string email, List<string> roles)
+        {
+            throw new NotImplementedException();
+        }
         public async Task<ApiResponse<CreateUserResponse>> CreateUserAsync(RegisterUser registerUser)
         {
             if (string.IsNullOrEmpty(registerUser.Email) || string.IsNullOrEmpty(registerUser.UserName) || string.IsNullOrEmpty(registerUser.Password))
@@ -65,10 +100,23 @@ namespace FDS.Service.Services
                 return new ApiResponse<CreateUserResponse> { IsSuccess = false, StatusCode = 400, Message = "Please provide all required fields" };
             }
             //Check User Exist 
-            var userExist = await _userManager.FindByEmailAsync(registerUser.Email);
+            var userExist = FindUserByEmailAsync(registerUser.Email);
             if (userExist != null)
             {
                 return new ApiResponse<CreateUserResponse> {IsSuccess = false, StatusCode= 403, Message = "User already exists!" };
+            }
+            var passwordValidator = new PasswordValidator<ApplicationUser>();
+            var validationResult = await passwordValidator.ValidateAsync(_userManager, null, registerUser.Password);
+            if (!validationResult.Succeeded)
+            {
+                var errorMessage = string.Join(", ", validationResult.Errors.Select(e => e.Description));
+
+                return new ApiResponse<CreateUserResponse>
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    Message = errorMessage
+                };
             }
             if (!IsEmailAllowed(registerUser.Email))
             {
@@ -95,7 +143,7 @@ namespace FDS.Service.Services
         }
         public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(LoginModel loginModel)
         {
-            var user = await _userManager.FindByEmailAsync(loginModel.Email);
+            var user = await FindUserByEmailAsync(loginModel.Email);
 
             if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
@@ -105,6 +153,16 @@ namespace FDS.Service.Services
             if (!IsEmailAllowed(loginModel.Email))
             {
                 return new ApiResponse<LoginResponse> { IsSuccess = false, StatusCode = 400, Message = "Only emails from vietjet.com domain are allowed!" };
+            }
+            var passwordValid = await _userManager.CheckPasswordAsync(user, loginModel.Password);
+            if (!passwordValid)
+            {
+                return new ApiResponse<LoginResponse>
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    Message = "Invalid email or password"
+                };
             }
             if (user != null)
             {
@@ -139,11 +197,11 @@ namespace FDS.Service.Services
                 authClaims.Add(new Claim(ClaimTypes.Role, role));
             }
             var jwtToken = GetToken(authClaims);  //token
-            var refeshtoken = GenerateRefreshToken();
+            var refreshtoken = GenerateRefreshToken();
 
             _ = int.TryParse(_configuration["JWT:RefreshTokenValidity"], out int RefreshToken);
 
-            user.RefreshToken = refeshtoken;
+            user.RefreshToken = refreshtoken;
             user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(RefreshToken);
 
 
@@ -177,29 +235,20 @@ namespace FDS.Service.Services
                 Message = $"Token created adn user login successfully"
             };
         }
-        
-
-        public async Task<IActionResult> ResetPassword(string token, string email)
-        {
-            var model = new ResetPassword { Token = token, Email = email };
-            return await Task.FromResult<IActionResult>(new OkObjectResult(new { model }));
-        }
 
         public async Task<ApiResponse<ResetPasswordResponse>> ForgotPasswordAsync(string email)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await FindUserByEmailAsync(email);
             if (user != null)
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var actionContext = new ActionContext(_httpContextAccessor.HttpContext, _httpContextAccessor.HttpContext.GetRouteData(), new ActionDescriptor());
 
-                var urlHelper = _urlHelperFactory.GetUrlHelper(actionContext);
-                var link = urlHelper.Action(nameof(ResetPassword), "Authentication", new { token, email = user.Email }, _httpContextAccessor.HttpContext.Request.Scheme);
+                var resetPasswordLink = $"{_configuration["AutheUrl"]}/reset-password?token={token}&email={Uri.EscapeDataString(email)}";
                 return new ApiResponse<ResetPasswordResponse>
                 {
                     Response = new ResetPasswordResponse()
                     {
-                        ResetPasswordLink = link
+                        ResetPasswordLink = resetPasswordLink
                     },
                     IsSuccess = true,
                     StatusCode = 200,
@@ -219,7 +268,7 @@ namespace FDS.Service.Services
 
         public async Task<ApiResponse<string>> ResetPasswordAsync(ResetPassword resetPassword)
         {
-            var user = await _userManager.FindByEmailAsync(resetPassword.Email);
+            var user = await FindUserByEmailAsync(resetPassword.Email);
 
             var passwordCheck = await _userManager.CheckPasswordAsync(user, resetPassword.Password);
             if (passwordCheck)
@@ -240,7 +289,38 @@ namespace FDS.Service.Services
 
             return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "User not found" };
         }
+        public async Task<ApiResponse<LoginResponse>> RenewAccessToken(RefreshTokenModel tokens)
+        {
 
+            var AccessToken = tokens.AccessToken;
+            var RefreshToken = tokens.RefreshToken;
+
+            var pricipal = GetClaimsPrincipal(AccessToken.Token);
+            var user = await _userManager.FindByNameAsync(pricipal.Identity.Name);
+            if (user.RefreshToken != RefreshToken.Token && RefreshToken.ExpiryTokenDate >= DateTime.UtcNow)
+            {
+                 return new ApiResponse<LoginResponse> { IsSuccess = false, StatusCode = 400, Message = "token invalid or expiried" };
+            }
+            var response = await GetJwtTokenAsync(user);
+            return response;
+        } 
+
+        private ClaimsPrincipal GetClaimsPrincipal(string accesstoken)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(accesstoken, tokenValidationParameters, out SecurityToken securityToken);
+
+            return principal;
+        }
         private bool IsEmailAllowed(string email)
         {
             string[] emailParts = email.Split('@');
@@ -254,9 +334,7 @@ namespace FDS.Service.Services
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-            var expirationTimeUtc = DateTime.UtcNow.AddDays(2);
-            var localTimeZone = TimeZoneInfo.Local;
-            var expirationTimeInLocalTimeZone = TimeZoneInfo.ConvertTimeFromUtc(expirationTimeUtc, localTimeZone);
+           
             _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"], out int TokenValidityInMinutes);
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
@@ -276,5 +354,7 @@ namespace FDS.Service.Services
             range.GetBytes(randomNumber);
             return Convert.ToBase64String(randomNumber);
         }
+
+        
     }
 }
