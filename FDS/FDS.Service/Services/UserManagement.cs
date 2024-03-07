@@ -326,7 +326,7 @@ namespace FDS.Service.Services
             string[] emailParts = email.Split('@');
             if (emailParts.Length == 2)
             {
-                return emailParts[1].Equals("vietjet.com", StringComparison.OrdinalIgnoreCase);
+                return emailParts[1].Equals("vietjetair.com", StringComparison.OrdinalIgnoreCase);
             }
             return false;
         }
