@@ -23,10 +23,12 @@ namespace FDS.Service.Services
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-        public UserManagement(UserManager<ApplicationUser> userManager,
+        public UserManagement(
+            UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
-            IConfiguration configuration)
+            IConfiguration configuration
+            )
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -89,7 +91,7 @@ namespace FDS.Service.Services
             return new ApiResponse<List<string>> { IsSuccess = true, StatusCode = 200, Message = "Role has been assigned ",Response = asignedRole };
 
         }
-        public Task<ApiResponse<string>> RemoveRolesAsync(string email, List<string> roles)
+        public  Task<ApiResponse<string>> RemoveRolesAsync(string email, List<string> roles)
         {
             throw new NotImplementedException();
         }
@@ -99,28 +101,18 @@ namespace FDS.Service.Services
             {
                 return new ApiResponse<CreateUserResponse> { IsSuccess = false, StatusCode = 400, Message = "Please provide all required fields" };
             }
-            //Check User Exist 
-            var userExist = FindUserByEmailAsync(registerUser.Email);
-            if (userExist != null)
+            var existingUser = await FindUserByEmailAsync(registerUser.Email);
+            if (existingUser != null)
             {
-                return new ApiResponse<CreateUserResponse> {IsSuccess = false, StatusCode= 403, Message = "User already exists!" };
-            }
-            var passwordValidator = new PasswordValidator<ApplicationUser>();
-            var validationResult = await passwordValidator.ValidateAsync(_userManager, null, registerUser.Password);
-            if (!validationResult.Succeeded)
-            {
-                var errorMessage = string.Join(", ", validationResult.Errors.Select(e => e.Description));
-
-                return new ApiResponse<CreateUserResponse>
-                {
-                    IsSuccess = false,
-                    StatusCode = 400,
-                    Message = errorMessage
-                };
+                return new ApiResponse<CreateUserResponse> { IsSuccess = false, StatusCode = 400, Message = "Email is already in use" };
             }
             if (!IsEmailAllowed(registerUser.Email))
             {
                 return new ApiResponse<CreateUserResponse> { IsSuccess = false, StatusCode = 400, Message = "Only emails from vietjet.com domain are allowed!" };
+            }
+            if (!IsPasswordValid(registerUser.Password))
+            {
+                return new ApiResponse<CreateUserResponse> { IsSuccess = false, StatusCode = 400, Message = "password is not in correct format" };
             }
             ApplicationUser user = new()
             {
@@ -204,8 +196,6 @@ namespace FDS.Service.Services
             user.RefreshToken = refreshtoken;
             user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(RefreshToken);
 
-
-
             await _userManager.UpdateAsync(user);
             var userDto = new UserDto
             {
@@ -286,7 +276,6 @@ namespace FDS.Service.Services
 
                 return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "Password reset failed" };
             }
-
             return new ApiResponse<string> { IsSuccess = false, StatusCode = 400, Message = "User not found" };
         }
         public async Task<ApiResponse<LoginResponse>> RenewAccessToken(RefreshTokenModel tokens)
@@ -294,7 +283,6 @@ namespace FDS.Service.Services
 
             var AccessToken = tokens.AccessToken;
             var RefreshToken = tokens.RefreshToken;
-
             var pricipal = GetClaimsPrincipal(AccessToken.Token);
             var user = await _userManager.FindByNameAsync(pricipal.Identity.Name);
             if (user.RefreshToken != RefreshToken.Token && RefreshToken.ExpiryTokenDate >= DateTime.UtcNow)
@@ -303,8 +291,16 @@ namespace FDS.Service.Services
             }
             var response = await GetJwtTokenAsync(user);
             return response;
-        } 
-
+        }
+        private bool IsPasswordValid(string password)
+        {
+            bool hasMinimumLength = password.Length >= 8;
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasLowerCase = password.Any(char.IsLower);
+            bool isValidPassword = hasMinimumLength && hasDigit && hasUpperCase && hasLowerCase;
+            return isValidPassword;
+        }
         private ClaimsPrincipal GetClaimsPrincipal(string accesstoken)
         {
             var tokenValidationParameters = new TokenValidationParameters
@@ -315,10 +311,8 @@ namespace FDS.Service.Services
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
                 ValidateLifetime = false
             };
-
             var tokenHandler = new JwtSecurityTokenHandler();
             var principal = tokenHandler.ValidateToken(accesstoken, tokenValidationParameters, out SecurityToken securityToken);
-
             return principal;
         }
         private bool IsEmailAllowed(string email)

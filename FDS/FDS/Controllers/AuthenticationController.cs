@@ -70,7 +70,7 @@ namespace FDS.Controllers
         }
         [HttpPost]
         [Route("setrole")]
-        //[Authorize(Roles = "Admin")] 
+        [Authorize(Roles = "Admin")] 
         public async Task<IActionResult> SetRoles(string email, List<string> roles)
         {
             var role = await _user.SetRolesAsync(email, roles);
@@ -82,23 +82,15 @@ namespace FDS.Controllers
         }
 
         [HttpPost("remove")]
+        [Authorize(Roles = "Admin")] 
         public async Task<IActionResult> RemoveRoles(string email, List<string> roles)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
+            var role = await _user.RemoveRolesAsync(email, roles);
+            if (role.IsSuccess)
             {
-                return NotFound($"User with email '{email}' not found.");
+                return Ok(role);
             }
-
-            var result = await _userManager.RemoveFromRolesAsync(user, roles);
-            if (result.Succeeded)
-            {
-                return Ok(new Response { Success = true, Message = "Roles removed successfully." });
-            }
-            else
-            {
-                return StatusCode(500, new Response { Success = false, Message = "Failed to remove roles." });
-            }
+            return BadRequest(role);
         }
 
         [HttpPost]
@@ -132,11 +124,8 @@ namespace FDS.Controllers
             {
                 return Ok(result);
             }
-
             return BadRequest(result);
         }
-
-        
         [HttpPost]
         [Route("Refresh-token")]
         public async Task<IActionResult> RefreshToken(RefreshTokenModel token)
@@ -148,7 +137,6 @@ namespace FDS.Controllers
             }
             return StatusCode(StatusCodes.Status404NotFound,
                 new Response { Status = "Error", Message = $"Invalid Code" });
-
         }
     }
 }
